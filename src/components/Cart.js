@@ -6,7 +6,7 @@ const Cart = () => {
   const cartItems = useSelector((store)=>store.cart);
   return (
     <div className='row'>
-      {cartItems.map((item)=> <Item key={item.id} product={item} />)}
+      {cartItems.map((item)=> <Item key={item.id} product={item} btn_text='Remove from Cart'/>)}
     </div>
   )
 }

@@ -12,7 +12,7 @@ const Product = () => {
     },[]);
   return (
     <div className='row'>
-      {products.map((product)=><Item key={product.id} product={product} />
+      {products.map((product)=><Item key={product.id} product={product} btn_text='Add to Cart'/>
     )}
     </div>
   )

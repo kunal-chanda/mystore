@@ -1,12 +1,20 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { add } from '../store/CartSlice';
+import { add, deleteFromCart } from '../store/CartSlice';
 import { useDispatch } from 'react-redux';
 
 const Item = (props) => {
     const dispatch  = useDispatch();
     console.log(props);
+
+    const handleClick=(id)=>{
+      if(props.btn_text==='Add to Cart'){
+        dispatch(add(props.product));
+      }else if(props.btn_text==='Remove from Cart'){
+        dispatch(deleteFromCart(id));
+      }
+    }
   return (
     <div className='col-md-2'>
     <Card style={{ height:'450px', border:'black solid', marginBottom:'8px' }}>
@@ -18,7 +26,7 @@ const Item = (props) => {
             </Card.Text>
         </Card.Body>
         <Card.Footer>
-            <Button variant="primary" onClick={()=> dispatch(add(props.product))}>Add to Cart</Button>
+            <Button variant="primary" onClick={()=>handleClick(props.product.id) }>{props.btn_text}</Button>
         </Card.Footer>
     </Card>
 </div>
